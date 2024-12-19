@@ -27,3 +27,35 @@ dataSources:
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
       file: ./src/event-deployer.ts
+  - kind: ethereum
+    name: EventTicket
+    network: sepolia
+    source:
+      address: "0x1b99A28047eAF709799aed0f8E1864a842F21de6"
+      abi: EventTicket
+      startBlock: 7303094
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - EventTicketInitialized
+        - EventTicketOwnershipTransferred
+        - Transfer
+      abis:
+        - name: EventTicket
+          file: ./abis/EventTicket.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: Initialized(uint64)
+          handler: handleInitialized
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/event-ticket.ts

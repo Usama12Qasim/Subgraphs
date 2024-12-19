@@ -3,6 +3,9 @@
     "EventDeployer": {
       "address": "0x4f4677ED3b8fc287EFBC05D7CcCAE801A8D799Fa",
       "startBlock": 7303093
+    },
+    "EventTicket": {
+      "address": "0x1b99A28047eAF709799aed0f8E1864a842F21de6"
     }
   }
 }
