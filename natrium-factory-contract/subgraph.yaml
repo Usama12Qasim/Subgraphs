@@ -1,0 +1,29 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: EventDeployer
+    network: sepolia
+    source:
+      address: "0x4f4677ED3b8fc287EFBC05D7CcCAE801A8D799Fa"
+      abi: EventDeployer
+      startBlock: 7303093
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Initialized
+        - OwnershipTransferred
+      abis:
+        - name: EventDeployer
+          file: ./abis/EventDeployer.json
+      eventHandlers:
+        - event: Initialized(uint64)
+          handler: handleInitialized
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/event-deployer.ts
